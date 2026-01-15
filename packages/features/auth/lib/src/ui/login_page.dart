@@ -37,7 +37,9 @@ class _AuthLoginPageState extends ConsumerState<AuthLoginPage> {
   Future<void> _handleLogin() async {
     if (!_formKey.currentState!.validate()) return;
 
-    await ref.read(authNotifierProvider.notifier).login(
+    await ref
+        .read(authNotifierProvider.notifier)
+        .login(
           email: _emailController.text.trim(),
           password: _passwordController.text,
         );
@@ -74,8 +76,8 @@ class _AuthLoginPageState extends ConsumerState<AuthLoginPage> {
                 Text(
                   'Sign in to continue',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: AppSpacing.xxl),
@@ -131,8 +133,9 @@ class _AuthLoginPageState extends ConsumerState<AuthLoginPage> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed:
-                        isLoading ? null : widget.onForgotPasswordPressed,
+                    onPressed: isLoading
+                        ? null
+                        : widget.onForgotPasswordPressed,
                     child: const Text('Forgot Password?'),
                   ),
                 ),

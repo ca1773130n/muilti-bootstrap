@@ -7,10 +7,7 @@ void main() {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(
-          body: AppButton(
-            onPressed: null,
-            child: Text('Continue'),
-          ),
+          body: AppButton(onPressed: null, child: Text('Continue')),
         ),
       ),
     );
@@ -21,9 +18,7 @@ void main() {
   testWidgets('AppTextField renders label', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
-        home: Scaffold(
-          body: AppTextField(label: 'Email'),
-        ),
+        home: Scaffold(body: AppTextField(label: 'Email')),
       ),
     );
 
@@ -32,11 +27,7 @@ void main() {
 
   testWidgets('LoadingIndicator renders', (tester) async {
     await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: LoadingIndicator(),
-        ),
-      ),
+      const MaterialApp(home: Scaffold(body: LoadingIndicator())),
     );
 
     expect(find.byType(CircularProgressIndicator), findsOneWidget);

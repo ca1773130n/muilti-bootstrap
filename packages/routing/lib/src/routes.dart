@@ -46,11 +46,7 @@ class SplashPage extends StatelessWidget {
       }
     });
 
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
+    return const Scaffold(body: Center(child: CircularProgressIndicator()));
   }
 }
 
@@ -73,9 +69,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text('Welcome to MyApp!'),
-      ),
+      body: const Center(child: Text('Welcome to MyApp!')),
     );
   }
 }
@@ -143,9 +137,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Profile')),
-      body: const Center(
-        child: Text('Profile Page'),
-      ),
+      body: const Center(child: Text('Profile Page')),
     );
   }
 }
@@ -157,9 +149,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
-      body: const Center(
-        child: Text('Settings Page'),
-      ),
+      body: const Center(child: Text('Settings Page')),
     );
   }
 }

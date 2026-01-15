@@ -17,19 +17,13 @@ class LoadingIndicator extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
-      child: CircularProgressIndicator(
-        strokeWidth: strokeWidth,
-        color: color,
-      ),
+      child: CircularProgressIndicator(strokeWidth: strokeWidth, color: color),
     );
   }
 }
 
 class LoadingOverlay extends StatelessWidget {
-  const LoadingOverlay({
-    super.key,
-    this.message,
-  });
+  const LoadingOverlay({super.key, this.message});
 
   final String? message;
 

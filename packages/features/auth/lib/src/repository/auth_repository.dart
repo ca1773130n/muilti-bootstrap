@@ -34,10 +34,10 @@ class ApiAuthRepository implements AuthRepository {
   @override
   Future<User> login({required String email, required String password}) async {
     final dio = _ref.read(dioProvider);
-    final response = await dio.post('/auth/login', data: {
-      'email': email,
-      'password': password,
-    });
+    final response = await dio.post(
+      '/auth/login',
+      data: {'email': email, 'password': password},
+    );
     return User.fromJson(response.data['user']);
   }
 
@@ -48,11 +48,14 @@ class ApiAuthRepository implements AuthRepository {
     String? name,
   }) async {
     final dio = _ref.read(dioProvider);
-    final response = await dio.post('/auth/register', data: {
-      'email': email,
-      'password': password,
-      if (name != null) 'name': name,
-    });
+    final response = await dio.post(
+      '/auth/register',
+      data: {
+        'email': email,
+        'password': password,
+        if (name != null) 'name': name,
+      },
+    );
     return User.fromJson(response.data['user']);
   }
 
@@ -86,7 +89,7 @@ class MockAuthRepository implements AuthRepository {
   @override
   Future<User> login({required String email, required String password}) async {
     await Future.delayed(const Duration(seconds: 1));
-    
+
     if (password.length < 6) {
       throw Exception('Invalid credentials');
     }

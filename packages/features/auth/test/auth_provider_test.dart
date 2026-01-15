@@ -16,7 +16,11 @@ class _FakeAuthRepository implements AuthRepository {
   Future<void> logout() async {}
 
   @override
-  Future<User> register({required String email, required String password, String? name}) {
+  Future<User> register({
+    required String email,
+    required String password,
+    String? name,
+  }) {
     throw UnimplementedError();
   }
 

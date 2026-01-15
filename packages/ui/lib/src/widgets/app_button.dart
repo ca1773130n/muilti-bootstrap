@@ -23,28 +23,25 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final button = switch (variant) {
       AppButtonVariant.primary => FilledButton(
-          onPressed: isLoading ? null : onPressed,
-          child: _buildChild(),
-        ),
+        onPressed: isLoading ? null : onPressed,
+        child: _buildChild(),
+      ),
       AppButtonVariant.secondary => FilledButton.tonal(
-          onPressed: isLoading ? null : onPressed,
-          child: _buildChild(),
-        ),
+        onPressed: isLoading ? null : onPressed,
+        child: _buildChild(),
+      ),
       AppButtonVariant.outlined => OutlinedButton(
-          onPressed: isLoading ? null : onPressed,
-          child: _buildChild(),
-        ),
+        onPressed: isLoading ? null : onPressed,
+        child: _buildChild(),
+      ),
       AppButtonVariant.text => TextButton(
-          onPressed: isLoading ? null : onPressed,
-          child: _buildChild(),
-        ),
+        onPressed: isLoading ? null : onPressed,
+        child: _buildChild(),
+      ),
     };
 
     if (isExpanded) {
-      return SizedBox(
-        width: double.infinity,
-        child: button,
-      );
+      return SizedBox(width: double.infinity, child: button);
     }
 
     return button;

@@ -22,12 +22,7 @@ Dio dio(Ref ref) {
   );
 
   if (Env.enableLogging) {
-    dio.interceptors.add(
-      LogInterceptor(
-        requestBody: true,
-        responseBody: true,
-      ),
-    );
+    dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
   }
 
   dio.interceptors.add(_ErrorInterceptor());

@@ -41,13 +41,15 @@ class _AuthRegisterPageState extends ConsumerState<AuthRegisterPage> {
     if (!_formKey.currentState!.validate()) return;
 
     if (_passwordController.text != _confirmPasswordController.text) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Passwords do not match')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Passwords do not match')));
       return;
     }
 
-    await ref.read(authNotifierProvider.notifier).register(
+    await ref
+        .read(authNotifierProvider.notifier)
+        .register(
           email: _emailController.text.trim(),
           password: _passwordController.text,
           name: _nameController.text.trim().isNotEmpty
@@ -87,8 +89,8 @@ class _AuthRegisterPageState extends ConsumerState<AuthRegisterPage> {
                 Text(
                   'Sign up to get started',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: AppSpacing.xl),

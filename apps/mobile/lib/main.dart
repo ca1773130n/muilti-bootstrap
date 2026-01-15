@@ -8,16 +8,18 @@ void main() {
 
   Env.initialize(
     flavorValue: const String.fromEnvironment('FLAVOR', defaultValue: 'dev'),
-    apiBaseUrlValue: const String.fromEnvironment('API_BASE_URL', defaultValue: 'http://localhost:8000'),
-    appNameValue: const String.fromEnvironment('APP_NAME', defaultValue: 'MyApp'),
+    apiBaseUrlValue: const String.fromEnvironment(
+      'API_BASE_URL',
+      defaultValue: 'http://localhost:8000',
+    ),
+    appNameValue: const String.fromEnvironment(
+      'APP_NAME',
+      defaultValue: 'MyApp',
+    ),
     enableLoggingValue: const String.fromEnvironment('ENABLE_LOGGING'),
   );
 
-  runApp(
-    const ProviderScope(
-      child: MyApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends ConsumerWidget {

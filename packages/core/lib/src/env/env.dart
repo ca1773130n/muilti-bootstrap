@@ -17,7 +17,8 @@ class Env {
     flavor = flavorFromString(flavorValue);
     apiBaseUrl = apiBaseUrlValue;
     appName = appNameValue;
-    enableLogging = enableLoggingValue?.toLowerCase() == 'true' || flavor == Flavor.dev;
+    enableLogging =
+        enableLoggingValue?.toLowerCase() == 'true' || flavor == Flavor.dev;
   }
 
   static bool get isDev => flavor == Flavor.dev;

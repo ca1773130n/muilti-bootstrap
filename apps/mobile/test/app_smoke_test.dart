@@ -13,11 +13,7 @@ void main() {
       enableLoggingValue: 'false',
     );
 
-    await tester.pumpWidget(
-      const ProviderScope(
-        child: MyApp(),
-      ),
-    );
+    await tester.pumpWidget(const ProviderScope(child: MyApp()));
 
     await tester.pump(const Duration(seconds: 3));
 

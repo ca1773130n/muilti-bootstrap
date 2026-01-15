@@ -1,8 +1,4 @@
-enum Flavor {
-  dev,
-  stage,
-  prod,
-}
+enum Flavor { dev, stage, prod }
 
 Flavor flavorFromString(String value) {
   return Flavor.values.firstWhere(

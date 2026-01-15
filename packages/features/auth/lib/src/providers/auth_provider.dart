@@ -31,7 +31,7 @@ class AuthNotifier extends _$AuthNotifier {
 
   Future<void> login({required String email, required String password}) async {
     state = const AuthState.loading();
-    
+
     final repository = ref.read(authRepositoryProvider);
     try {
       final user = await repository.login(email: email, password: password);
@@ -47,7 +47,7 @@ class AuthNotifier extends _$AuthNotifier {
     String? name,
   }) async {
     state = const AuthState.loading();
-    
+
     final repository = ref.read(authRepositoryProvider);
     try {
       final user = await repository.register(
@@ -63,7 +63,7 @@ class AuthNotifier extends _$AuthNotifier {
 
   Future<void> logout() async {
     state = const AuthState.loading();
-    
+
     final repository = ref.read(authRepositoryProvider);
     try {
       await repository.logout();
@@ -82,17 +82,11 @@ class AuthNotifier extends _$AuthNotifier {
 @riverpod
 User? currentUser(Ref ref) {
   final authState = ref.watch(authNotifierProvider);
-  return authState.maybeWhen(
-    authenticated: (user) => user,
-    orElse: () => null,
-  );
+  return authState.maybeWhen(authenticated: (user) => user, orElse: () => null);
 }
 
 @riverpod
 bool isAuthenticated(Ref ref) {
   final authState = ref.watch(authNotifierProvider);
-  return authState.maybeWhen(
-    authenticated: (_) => true,
-    orElse: () => false,
-  );
+  return authState.maybeWhen(authenticated: (_) => true, orElse: () => false);
 }
