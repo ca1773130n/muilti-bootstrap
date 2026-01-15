@@ -30,6 +30,9 @@ jobs:
       - name: Bootstrap
         run: melos bootstrap
 
+      - name: Generate
+        run: melos run generate --no-select
+
       - name: Analyze
         run: melos analyze
 
@@ -55,6 +58,9 @@ jobs:
       - name: Bootstrap
         run: melos bootstrap
 
+      - name: Generate
+        run: melos run generate --no-select
+
       - name: Run Tests
         run: melos test
 
@@ -77,6 +83,9 @@ jobs:
 
       - name: Bootstrap
         run: melos bootstrap
+
+      - name: Generate
+        run: melos run generate --no-select
 
       - name: Build Web
         run: melos build:web
@@ -114,6 +123,9 @@ jobs:
 
       - name: Bootstrap
         run: melos bootstrap
+
+      - name: Generate
+        run: melos run generate --no-select
 
       - name: Build Android APK
         run: melos build:android
