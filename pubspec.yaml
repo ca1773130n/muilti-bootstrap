@@ -1,0 +1,102 @@
+name: multi_bootstrap
+description: Flutter multiplatform bootstrap monorepo workspace
+
+publish_to: none
+
+environment:
+  sdk: ">=3.10.0 <4.0.0"
+
+workspace:
+  - apps/mobile
+  - packages/core
+  - packages/ui
+  - packages/routing
+  - packages/features/auth
+
+# This is a workspace root - no dependencies here
+# All dependencies are in individual packages
+
+melos:
+  name: multi_bootstrap
+  packages:
+    - apps/**
+    - packages/**
+
+  command:
+    bootstrap:
+      usePubspecOverrides: true
+
+  scripts:
+    analyze:
+      run: dart run melos exec --concurrency=1 -- flutter analyze --no-fatal-infos
+      description: Run flutter analyze in all packages
+
+    test:
+      run: |
+        dart run melos exec --concurrency=1 -- "bash -c 'if ls test/*_test.dart >/dev/null 2>&1; then flutter test --coverage; else echo \"No tests found.\"; fi'"
+      description: Run tests in all packages
+      packageFilters:
+        dirExists: test
+
+    test:unit:
+      run: |
+        dart run melos exec --concurrency=1 -- "bash -c 'if ls test/*_test.dart >/dev/null 2>&1; then flutter test --coverage; else echo \"No tests found.\"; fi'"
+      description: Run unit tests only
+      packageFilters:
+        dirExists: test
+
+    format:
+      run: dart run melos exec -- dart format .
+      description: Format all packages
+
+    format:check:
+      run: dart run melos exec -- dart format --set-exit-if-changed .
+      description: Check formatting in all packages
+
+    clean:
+      run: dart run melos exec -- flutter clean
+      description: Clean all packages
+
+    build:web:
+      run: |
+        cd apps/mobile && flutter build web --release --dart-define-from-file=.env.prod
+      description: Build web release
+
+    build:android:
+      run: |
+        cd apps/mobile && flutter build apk --release --flavor prod --dart-define-from-file=.env.prod
+      description: Build Android release APK
+
+    build:ios:
+      run: |
+        cd apps/mobile && flutter build ios --release --flavor prod --dart-define-from-file=.env.prod --no-codesign
+      description: Build iOS release (no codesign)
+
+    run:dev:
+      run: |
+        cd apps/mobile && flutter run --flavor dev --dart-define-from-file=.env.dev
+      description: Run app with dev flavor
+
+    run:stage:
+      run: |
+        cd apps/mobile && flutter run --flavor stage --dart-define-from-file=.env.stage
+      description: Run app with stage flavor
+
+    run:prod:
+      run: |
+        cd apps/mobile && flutter run --flavor prod --dart-define-from-file=.env.prod
+      description: Run app with prod flavor
+
+    run:web:
+      run: |
+        cd apps/mobile && flutter run -d chrome --dart-define-from-file=.env.dev
+      description: Run app on web (dev)
+
+    generate:
+      run: dart run melos exec -- dart run build_runner build --delete-conflicting-outputs
+      description: Run build_runner in all packages
+      packageFilters:
+        dependsOn: build_runner
+
+dev_dependencies:
+  melos: ^7.3.0

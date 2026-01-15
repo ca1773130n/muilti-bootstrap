@@ -1,0 +1,32 @@
+name: core
+description: Core package with environment config, networking, and shared utilities
+version: 0.1.0
+
+publish_to: none
+
+environment:
+  sdk: ">=3.10.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+  dio: ^5.4.0
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.9.0
+  flutter_dotenv: ^5.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.8
+  freezed: ^2.4.6
+  json_serializable: ^6.7.1
+  riverpod_generator: ^2.3.9
+  mockito: ^5.4.4
+  build_verify: ^3.1.0

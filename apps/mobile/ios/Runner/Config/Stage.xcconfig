@@ -1,0 +1,4 @@
+FLUTTER_TARGET=lib/main.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.example.mobile.stage
+PRODUCT_NAME=MyApp Stage
+DISPLAY_NAME=MyApp Stage
