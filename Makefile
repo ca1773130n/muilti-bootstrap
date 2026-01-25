@@ -1,4 +1,4 @@
-.PHONY: setup bootstrap clean analyze test format generate
+.PHONY: setup bootstrap clean analyze test format generate init
 .PHONY: run-dev run-stage run-prod run-web
 .PHONY: build-web build-android build-ios
 
@@ -16,6 +16,10 @@ bootstrap: setup
 
 clean:
 	$(MELOS) clean
+
+# === Initialization ===
+init:
+	@./scripts/init.sh
 
 # === Development ===
 analyze:
