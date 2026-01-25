@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:core/core.dart';
 
 import '../models/user.dart';
+import 'supabase_auth_repository.dart';
 
 part 'auth_repository.g.dart';
 
@@ -20,9 +21,18 @@ abstract class AuthRepository {
 
 @riverpod
 AuthRepository authRepository(Ref ref) {
-  if (Env.isDev) {
+  // Use mock for dev without Supabase config
+  if (Env.isDev && !Env.hasSupabaseConfig) {
     return MockAuthRepository();
   }
+
+  // Use Supabase for stage/prod or dev with Supabase config
+  if (Env.hasSupabaseConfig) {
+    final auth = ref.watch(supabaseAuthProvider);
+    return SupabaseAuthRepository(auth);
+  }
+
+  // Fallback to API implementation
   return ApiAuthRepository(ref);
 }
 
