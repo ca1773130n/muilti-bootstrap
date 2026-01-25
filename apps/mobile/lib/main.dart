@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:core/core.dart';
 import 'package:routing/routing.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Env.initialize(
@@ -17,7 +17,12 @@ void main() {
       defaultValue: 'MyApp',
     ),
     enableLoggingValue: const String.fromEnvironment('ENABLE_LOGGING'),
+    supabaseUrlValue: const String.fromEnvironment('SUPABASE_URL'),
+    supabaseAnonKeyValue: const String.fromEnvironment('SUPABASE_ANON_KEY'),
   );
+
+  // Initialize Supabase if configured
+  await initializeSupabase();
 
   runApp(const ProviderScope(child: MyApp()));
 }
