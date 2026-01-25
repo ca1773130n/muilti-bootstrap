@@ -95,10 +95,7 @@ class HomePage extends ConsumerWidget {
             ),
             if (user != null) ...[
               const SizedBox(height: 8),
-              Text(
-                user.email,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
+              Text(user.email, style: Theme.of(context).textTheme.bodyLarge),
             ],
           ],
         ),
@@ -129,7 +126,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   Future<void> _handleLogin() async {
     if (_formKey.currentState?.validate() ?? false) {
-      await ref.read(authNotifierProvider.notifier).login(
+      await ref
+          .read(authNotifierProvider.notifier)
+          .login(
             email: _emailController.text.trim(),
             password: _passwordController.text,
           );
@@ -284,7 +283,9 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
 
   Future<void> _handleRegister() async {
     if (_formKey.currentState?.validate() ?? false) {
-      await ref.read(authNotifierProvider.notifier).register(
+      await ref
+          .read(authNotifierProvider.notifier)
+          .register(
             email: _emailController.text.trim(),
             password: _passwordController.text,
             name: _nameController.text.trim().isEmpty
@@ -412,8 +413,10 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                             : Icons.visibility_off_outlined,
                       ),
                       onPressed: () {
-                        setState(() =>
-                            _obscureConfirmPassword = !_obscureConfirmPassword);
+                        setState(
+                          () => _obscureConfirmPassword =
+                              !_obscureConfirmPassword,
+                        );
                       },
                     ),
                   ),

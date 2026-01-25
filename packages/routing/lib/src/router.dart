@@ -10,16 +10,10 @@ import 'routes.dart';
 part 'router.g.dart';
 
 /// Routes that require authentication.
-const _protectedRoutes = [
-  RoutePaths.profile,
-  RoutePaths.settings,
-];
+const _protectedRoutes = [RoutePaths.profile, RoutePaths.settings];
 
 /// Routes that are only for unauthenticated users.
-const _authRoutes = [
-  RoutePaths.login,
-  RoutePaths.register,
-];
+const _authRoutes = [RoutePaths.login, RoutePaths.register];
 
 @riverpod
 GoRouter router(Ref ref) {

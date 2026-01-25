@@ -10,10 +10,7 @@ class SupabaseAuthRepository implements AuthRepository {
   final supabase.GoTrueClient _auth;
 
   @override
-  Future<User> login({
-    required String email,
-    required String password,
-  }) async {
+  Future<User> login({required String email, required String password}) async {
     try {
       final response = await _auth.signInWithPassword(
         email: email,

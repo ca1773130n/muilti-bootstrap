@@ -40,7 +40,9 @@ abstract class SupabaseDatabaseService<T> {
   /// Fetch all records from the table.
   Future<List<T>> fetchAll() async {
     final response = await table.select();
-    return (response as List).map((e) => fromJson(e as Map<String, dynamic>)).toList();
+    return (response as List)
+        .map((e) => fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 
   /// Fetch a single record by ID.
@@ -57,7 +59,11 @@ abstract class SupabaseDatabaseService<T> {
 
   /// Update an existing record by ID and return the updated model.
   Future<T> update(String id, T model) async {
-    final response = await table.update(toJson(model)).eq('id', id).select().single();
+    final response = await table
+        .update(toJson(model))
+        .eq('id', id)
+        .select()
+        .single();
     return fromJson(response);
   }
 
@@ -69,6 +75,8 @@ abstract class SupabaseDatabaseService<T> {
   /// Fetch records with a custom filter.
   Future<List<T>> fetchWhere(String column, dynamic value) async {
     final response = await table.select().eq(column, value);
-    return (response as List).map((e) => fromJson(e as Map<String, dynamic>)).toList();
+    return (response as List)
+        .map((e) => fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 }
